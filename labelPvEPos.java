@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.util.ArrayList;
 
+//Handles putting ships, missed shots, and hit shots on the board to see
 public class labelPvEPos {
 
     private JLabel label;
@@ -9,10 +10,12 @@ public class labelPvEPos {
 
     public static ArrayList<labelPvEPos> registry;
 
+    //Getter for arraylist
     public static ArrayList<labelPvEPos> getRegistry() {
         return registry;
     }
 
+    //Constructor which gives a JLabel a position
     public labelPvEPos(JLabel label, int x, int y) {
         if (registry == null) registry = new ArrayList<>();
         this.label = label;
@@ -21,6 +24,7 @@ public class labelPvEPos {
         registry.add(this);
     }
 
+  
     public labelPvEPos(JLabel label, int x, int y, boolean regenerateRegistry) {
         if (registry == null || regenerateRegistry) registry = new ArrayList<>();
         this.label = label;
@@ -29,6 +33,7 @@ public class labelPvEPos {
         registry.add(this);
     }
 
+    //Getters
     public JLabel getLabel() {
         return label;
     }
