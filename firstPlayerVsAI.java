@@ -5,13 +5,16 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.util.Objects;
 
+//Controld the game when playing against AI
 public class firstPlayerVsAI extends javax.swing.JFrame {
 
+    //Constructor that calls a method to create JFrame
     public firstPlayerVsAI() {
         initComponents();
     }
 
 
+    //Constructs the JFrame and designs the assets
     private void initComponents() {
 
         yourGrid = new javax.swing.JLabel();
@@ -195,6 +198,7 @@ public class firstPlayerVsAI extends javax.swing.JFrame {
         setBounds(0, 0, 772, 488);
     }
 
+    //prints out your ship locations as well as where the AI has shot onto a grid
     public void drawYourBoard(int[][] array, int xP, int yP){
         String ship = "\u25A0";
         String miss = "\u25A2";
@@ -223,6 +227,7 @@ public class firstPlayerVsAI extends javax.swing.JFrame {
 
     }
 
+    //Draws where you have shot and if you hit or miss a ship
     public void drawTargetBoard(int[][]array, int xP, int yP){
         String ship = "\u0078";
         String miss = "\u25A2";
@@ -248,6 +253,9 @@ public class firstPlayerVsAI extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
     }
 
+    //Controls what occur when the fire button is pressed
+    //Checks to see if the player has won by hitting all ships and if the player misses it has the AI shoot
+    //Also checks to see if the player has died
     private void fireBActionEvent(java.awt.event.ActionEvent evt){
         int row = Integer.parseInt(inRow.getText()) - 1;
         int col = Integer.parseInt(inCol.getText()) - 1;
@@ -470,6 +478,7 @@ public class firstPlayerVsAI extends javax.swing.JFrame {
         drawYourBoard(yoBoard,102,38);
     }
 
+    //Checks to see if the player has anymore ships on the board
     public boolean youAreDead(){
         for(int r = 0; r < yoBoard.length; r++){
             for(int c = 0; c < yoBoard[0].length; c++){
@@ -480,6 +489,8 @@ public class firstPlayerVsAI extends javax.swing.JFrame {
         }
         return true;
     }
+    
+    //These next methods check to see if the corresponding ship has been sunk
     public static boolean isCarrierDead(){
         for(int r = 0; r < yoShips.length; r++){
             for(int c = 0; c < yoShips[r].length; c++){
@@ -531,6 +542,7 @@ public class firstPlayerVsAI extends javax.swing.JFrame {
         return true;
     }
 
+    //Handles what happens when the restart button is pressed
     private void restartBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         if(homeScreen.getTheName().equalsIgnoreCase("rico")){
@@ -543,6 +555,7 @@ public class firstPlayerVsAI extends javax.swing.JFrame {
         o.setVisible(true);
     }
 
+    //Handles what happens when the new button is pressed
     private void newBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         if(homeScreen.getTheName().equalsIgnoreCase("rico")){
@@ -555,6 +568,7 @@ public class firstPlayerVsAI extends javax.swing.JFrame {
         o.setVisible(true);
     }
 
+    //Closes the JFrame
     public void close(){
         WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
