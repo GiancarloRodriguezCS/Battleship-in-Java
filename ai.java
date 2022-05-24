@@ -1,3 +1,4 @@
+//This class conntrold what the AI does
 public class ai {
 
     private static int[][] aiBoardO1 = {{0,1,1,1,0,0,0,0,0,0},
@@ -128,6 +129,7 @@ public class ai {
     public static int[][] getTheBoard(){return board;}
     public static int[][] getShips(){return ships;}
 
+    //selects a preset board
     public static void getBoard(){
         double ran = Math.random();
         if(ran >= 0.8){
@@ -152,6 +154,7 @@ public class ai {
         }
     }
 
+    //Checks to see if the ai still has ships left
     public static boolean isDead(){
         for(int r = 0; r < board.length; r++){
             for(int c = 0; c < board[r].length; c++){
@@ -163,6 +166,7 @@ public class ai {
         return true;
     }
 
+    //These next methods check to see if the respective ship is still alive
     public static boolean isCarrierDead(){
         for(int r = 0; r < ships.length; r++){
             for(int c = 0; c < ships[r].length; c++){
@@ -218,20 +222,24 @@ public class ai {
         return true;
     }
 
+    //Gets a row to shoot at
     public static int ranRow(){
         int row = (int)(Math.random() * 10);
         return row;
     }
+    //Gets a collumn to shoot at
     public static int ranCol(){
         int col = (int)(Math.random() * 10);
         return col;
     }
 
+    //Changes the values of thew board when that point is hit
     public static void getHit(int row, int col){
         board[row][col] = 0;
         ships[row][col] = 0;
     }
 
+    //Checks to see if the selected point has been shot at already, if not then it will shoot there
     public static boolean isValidShot(int row, int col){
         if(hasShot[row][col]){
             setShot(row,col);
@@ -240,6 +248,7 @@ public class ai {
         return false;
     }
 
+    //Will change the selected point to false meaning that point has been shot at already
     public static void setShot(int row, int col){
         hasShot[row][col] = false;
     }
