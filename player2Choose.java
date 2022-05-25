@@ -3,13 +3,17 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.util.Objects;
 
+//This class sets up the screen for the second player to choose ship location 
+//as well as communicate to other classes what the second player chooses
 public class player2Choose extends javax.swing.JFrame {
 
+    //Constructor calls method to create JFrame
     public player2Choose() {
         initComponents();
     }
 
 
+    //This method creates the JFrame and all of the assets
     private void initComponents() {
 
         JLabel jLabel1 = new JLabel();
@@ -184,6 +188,7 @@ public class player2Choose extends javax.swing.JFrame {
         }
     }
 
+    //Main method to run from this class
     public static void main(String args[]) {
 
 
@@ -195,6 +200,7 @@ public class player2Choose extends javax.swing.JFrame {
         });
     }
 
+    //Places the desired ship a desired orientation on an array 
     public static void assignValues(int row,int col, String orientation, String shipType){
         if(orientation.equalsIgnoreCase("horizontal")){
             if(shipType.equalsIgnoreCase("carrier")){
@@ -288,10 +294,13 @@ public class player2Choose extends javax.swing.JFrame {
         System.out.println();
     }
 
+    //Checks to see if that point is already taken
+    //Returns false if taken
     public static boolean checkRowAndCol(int row, int col){
         return board[row][col] != 1;
     }
 
+    //checks to see if that ship has been placed
     public static boolean checkShip(String shipType){
         if(shipType.equalsIgnoreCase("carrier") && carrier){
             return true;
@@ -311,6 +320,7 @@ public class player2Choose extends javax.swing.JFrame {
         return false;
     }
 
+    //Checks to see if the desired placement for ship is valid considering ship length and orientation
     public static boolean isValidPlacement(int row, int col, String orientation ,String shipType){
         if(shipType.equalsIgnoreCase("carrier")){
             if(orientation.equalsIgnoreCase("vertical")){
@@ -355,6 +365,7 @@ public class player2Choose extends javax.swing.JFrame {
         return false;
     }
 
+    //Draws the board to display ship placement 
     public void drawBoard(){
         String ship = "\u25A0";
         String no = " ";
@@ -379,11 +390,13 @@ public class player2Choose extends javax.swing.JFrame {
     }
 
 
+    //Closes the JFrame
     public void close(){
         WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
 
+    //Removes all placed ships from the board
     public static void resetValues(){
         for(int r = 0; r < board.length; r++){
             for(int c = 0; c < board[0].length; c++){
@@ -402,6 +415,7 @@ public class player2Choose extends javax.swing.JFrame {
         destroyer = true;
     }
 
+    //Displays a rectangle to cover the players screen during transition
     public static void coverFrame(){
         coverFrame = new JFrame();
         coverFrame.setSize(1500,800);
@@ -426,6 +440,7 @@ public class player2Choose extends javax.swing.JFrame {
     private javax.swing.JLabel grid;
     private static JFrame coverFrame;
 
+    //Getter to see array ship placement 
     public static int[][] getBoard() {
         return board;
     }
