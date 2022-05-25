@@ -7,13 +7,16 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.Objects;
 
+//Class that displays the opponents ship layout
 public class secretSightP2 extends javax.swing.JFrame {
 
 
+    //Constructor to create JFrame
     public secretSightP2() {
         initComponents();
     }
 
+    //Creates JFrame and assets 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
@@ -38,6 +41,7 @@ public class secretSightP2 extends javax.swing.JFrame {
         setBounds(0, 0, 400, 328);
     }// </editor-fold>
 
+    //Draws out locations of ships
     public void drawYourBoard(int[][] array, int xP, int yP) {
         String ship = "\u25A0";
         String no = " ";
@@ -62,6 +66,7 @@ public class secretSightP2 extends javax.swing.JFrame {
     }
 
 
+    //Method to close JFrame
     public void close(){
         WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
