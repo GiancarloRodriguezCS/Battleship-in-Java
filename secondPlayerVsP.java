@@ -3,8 +3,10 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.util.Objects;
 
+//This class handles gameplay for the second player in player versus player
 public class secondPlayerVsP extends javax.swing.JFrame {
 
+    //Constructor calls method to create JFrame
     public secondPlayerVsP() {
         initComponents();
     }
@@ -14,6 +16,7 @@ public class secondPlayerVsP extends javax.swing.JFrame {
     }
 
 
+    //Creates JFrame and assets
     private void initComponents() {
 
         yourGrid = new javax.swing.JLabel();
@@ -197,6 +200,7 @@ public class secondPlayerVsP extends javax.swing.JFrame {
         setBounds(0, 0, 772, 488);
     }
 
+    //Draws the board showing your ships and opponents shots
     public void drawYourBoard(int[][] array, int xP, int yP){
         String ship = "\u25A0";
         String hit = "\u0078";
@@ -224,7 +228,8 @@ public class secondPlayerVsP extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
 
     }
-
+    
+    //Displays your shots on separate board
     public void drawTargetBoard(int[][]array, int xP, int yP){
         String ship = "\u0078";
         String miss = "\u25A2";
@@ -250,6 +255,9 @@ public class secondPlayerVsP extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
     }
 
+    //Handles what occurs when "Fire" button is pressed
+    //If the player hits then they get to go again and it also checks to see if the player has won in which the game ends
+    //If the player misses it move onto the next players turn
     private void fireBActionEvent(java.awt.event.ActionEvent evt){
         int row = Integer.parseInt(inRow.getText()) - 1;
         int col = Integer.parseInt(inCol.getText()) - 1;
@@ -331,6 +339,7 @@ public class secondPlayerVsP extends javax.swing.JFrame {
         drawYourBoard(yoBoard,102,38);
     }
 
+    //Checks to see if the player still has ships left on the board
     public static boolean youAreDead(){
         for(int r = 0; r < yoBoard.length; r++){
             for(int c = 0; c < yoBoard[0].length; c++){
@@ -341,6 +350,8 @@ public class secondPlayerVsP extends javax.swing.JFrame {
         }
         return true;
     }
+    
+    //The following methods check to see if the respective ships are dead
     public static boolean isCarrierDead(){
         for(int r = 0; r < yoShips.length; r++){
             for(int c = 0; c < yoShips[r].length; c++){
@@ -392,6 +403,7 @@ public class secondPlayerVsP extends javax.swing.JFrame {
         return true;
     }
 
+    //Sets the player back to the game selection screen and resets values
     private void restartBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         if(homeScreen.getTheName().equalsIgnoreCase("rico")){
@@ -404,6 +416,7 @@ public class secondPlayerVsP extends javax.swing.JFrame {
         o.setVisible(true);
     }
 
+    //Sends players back to ship placement screen and resets values
     private void newBActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         if(homeScreen.getTheName().equalsIgnoreCase("rico")){
@@ -417,6 +430,7 @@ public class secondPlayerVsP extends javax.swing.JFrame {
         o.setVisible(true);
     }
 
+    //Gets the amounts of ships you and opponent have left and creates ratio based off this
     public void getAmtShips(){
         amtShips = 5;
         amtOShips = 5;
@@ -454,6 +468,7 @@ public class secondPlayerVsP extends javax.swing.JFrame {
         oppShipsLeft.setText("Opponents Ships Left: " + amtOShips);
     }
 
+    //Displays screen to cover ships during transition
     public static void coverFrame(){
         coverFrame = new JFrame();
         coverFrame.setSize(1500,800);
@@ -469,11 +484,13 @@ public class secondPlayerVsP extends javax.swing.JFrame {
         coverFrame.setVisible(true);
     }
 
+    //Method to close JFrame
     public void close(){
         WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
 
+    //CHecks to if the player has been hit
     public static void getHit(int row, int col, boolean isFirst){
         if(isFirst)
         yoBoard[row][col] = 7;
@@ -482,6 +499,7 @@ public class secondPlayerVsP extends javax.swing.JFrame {
         yoShips[row][col] = 0;
     }
 
+    //Checks to see if the player has missed their shot
     public static void getMiss(int row, int col){
         yoBoard[row][col] = 8;
     }
