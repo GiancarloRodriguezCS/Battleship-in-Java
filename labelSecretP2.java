@@ -1,6 +1,7 @@
 import javax.swing.JLabel;
 import java.util.ArrayList;
 
+//Handles putting ships of the opponent for the player to see
 public class labelSecretP2 {
 
     private JLabel label;
@@ -9,10 +10,12 @@ public class labelSecretP2 {
 
     public static ArrayList<labelSecretP2> registry;
 
+    //Getter for arraylist
     public static ArrayList<labelSecretP2> getRegistry() {
         return registry;
     }
 
+    //Constructor which gives a JLabel a position
     public labelSecretP2(JLabel label, int x, int y) {
         if (registry == null) registry = new ArrayList<>();
         this.label = label;
@@ -29,6 +32,7 @@ public class labelSecretP2 {
         registry.add(this);
     }
 
+    //Getters
     public JLabel getLabel() {
         return label;
     }
