@@ -7,13 +7,16 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.Objects;
 
+//This class displays the ship layout of the AI when the players name is "Rico"
 public class secretSightAi extends javax.swing.JFrame {
 
 
+    //Constructor that calls a method to create JFrame
     public secretSightAi() {
         initComponents();
     }
 
+    //Create the JFrame and other assets
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
@@ -38,6 +41,7 @@ public class secretSightAi extends javax.swing.JFrame {
         setBounds(0, 0, 400, 328);
     }// </editor-fold>
 
+    //Main method to run class directly
     public static void main(String args[]) {
 
 
@@ -48,6 +52,7 @@ public class secretSightAi extends javax.swing.JFrame {
         });
     }
 
+    //Draws up the board displaying the AI ship location
     public void drawYourBoard(int[][] array, int xP, int yP) {
         String ship = "\u25A0";
         String no = " ";
@@ -72,6 +77,7 @@ public class secretSightAi extends javax.swing.JFrame {
     }
 
 
+    //Method to close JFrame
     public void close(){
         WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
